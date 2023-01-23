@@ -1,5 +1,6 @@
 # dependencies
 /node_modules
+/dist
 
 # System Files
 .DS_Store
@@ -11,6 +12,7 @@ Thumbs.db
 .idea/
 *.PEM
 .vscode/
+.env
 
 # Logs
 npm-debug.log
