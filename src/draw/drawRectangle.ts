@@ -1,6 +1,7 @@
 import { mouse, Button, right, down, left, up } from "@nut-tree/nut-js";
 
 export const drawRectangle = async (args: string[]) => {
+	mouse.config.mouseSpeed = 200;
 	const [width, length] = args
 	await mouse.leftClick();
 	await mouse.pressButton(Button.LEFT);

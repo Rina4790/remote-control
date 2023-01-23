@@ -34,25 +34,24 @@ wss.on("connection", (ws: WebSocket.WebSocket) => {
     .on("close", () => {
       console.log("webSocketStream has been closed!");
       wsStrem.end();
-    })
-  .on("close", () => {
-    console.log("WebSocketServer closed!");
-    
-  })
+    });
+});
+wss.on("close", () => {
+  console.log("\n", `WebSocketServer ${WSS_PORT} closed!`);
+});
 
-  .on("error", (error) => {
-    console.log("WebSocketServer has Error:", error);
-  });
+wss.on("error", (error) => {
+  console.log("WebSocketServer has Error:", error);
 });
 
 process.on("SIGINT", () => {
   wss.clients.forEach((client) => {
-	  if (client.readyState === WebSocket.WebSocket.OPEN) {
-		  client.close()
-	  };
+    if (client.readyState === WebSocket.WebSocket.OPEN) {
+      client.close();
+    }
   });
-  console.log("\n", "Websocket has been closed!");
+
   wss.close();
   httpServer.close();
-  process.exit();
+  console.log("\n", `HTTPServer ${HTTP_PORT} closed!`);
 });
